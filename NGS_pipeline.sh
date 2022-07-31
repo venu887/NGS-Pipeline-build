@@ -42,11 +42,14 @@ fastqc data/SRR1_Trim.fastq -o data/
 hisat2 -q --rna-strandness R -x hisat2/grch38/genome -U data/SRR1_Trim.fastq | samtools sort -o hisat2/SRR1_trimmed.bam
 echo "HISAT2 finished running!"
 
-# STEP 3: Run featureCounts - Quantification
+# STEP 5: Run featureCounts - Quantification
 
-# get features 
+# get features install tool called SubRead
+# sudo apt-get update
+# sudo apt-get install subread
+# download Ensembol/ human/ gene annotation/ .gtf file (https://asia.ensembl.org/Homo_sapiens/Info/Index)
 # wget http://ftp.ensembl.org/pub/release-106/gtf/homo_sapiens/Homo_sapiens.GRCh38.106.gtf.gz
-featureCounts -S 2 -a ../hg38/Homo_sapiens.GRCh38.106.gtf -o quants/demo_featurecounts.txt HISAT2/demo_trimmed.bam
+featureCounts -S 2 -a hg38/Homo_sapiens.GRCh38.107.gtf.gz -o quants/SRR1_featurecounts.txt hisat2/SRR1_trimmed.bam
 echo "featureCounts finished running!"
 
 
