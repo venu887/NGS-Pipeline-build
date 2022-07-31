@@ -14,7 +14,7 @@ cd /home/venu/Desktop/NGS_pipeline/
 # Run fastqc
 #SRA_fastaq files
 # Output as .html and .gz files
-#fastqc data/SRR_1.fastq -o data/
+fastqc data/SRR_1.fastq -o data/
 
 
 # 3. Run trimmomatic to trim reads with poor quality if necessory after verifying the data for many factors like per base quality, adopters...
@@ -23,11 +23,11 @@ cd /home/venu/Desktop/NGS_pipeline/
 # There are many tools for trimming data.
 # Make sure you have to give correct present working directory path and input put file name, Create output file name
 # Out put as FASTQC file
-#java -jar ~//Desktop/NGS_pipeline/Trimmomatic-0.39/trimmomatic-0.39.jar SE -threads 4 data/SRR_1.fastq data/SRR1_Trim.fastq TRAILING:10 -phred33
-#echo "Trimmomatic finished running!"
+java -jar ~//Desktop/NGS_pipeline/Trimmomatic-0.39/trimmomatic-0.39.jar SE -threads 4 data/SRR_1.fastq data/SRR1_Trim.fastq TRAILING:10 -phred33
+echo "Trimmomatic finished running!"
 
 # If necessory again run FastaQC for new trimmed file
-#fastqc data/SRR1_Trim.fastq -o data/
+fastqc data/SRR1_Trim.fastq -o data/
 
 
 # 4. Run HISAT2 for genome allignment with humangenome 38
@@ -46,8 +46,8 @@ echo "HISAT2 finished running!"
 
 # get features 
 # wget http://ftp.ensembl.org/pub/release-106/gtf/homo_sapiens/Homo_sapiens.GRCh38.106.gtf.gz
-#featureCounts -S 2 -a ../hg38/Homo_sapiens.GRCh38.106.gtf -o quants/demo_featurecounts.txt HISAT2/demo_trimmed.bam
-#echo "featureCounts finished running!"
+featureCounts -S 2 -a ../hg38/Homo_sapiens.GRCh38.106.gtf -o quants/demo_featurecounts.txt HISAT2/demo_trimmed.bam
+echo "featureCounts finished running!"
 
 
 duration=$SECONDS
