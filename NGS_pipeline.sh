@@ -23,6 +23,7 @@ fastqc data/SRR_1.fastq -o data/
 # There are many tools for trimming data.
 # Make sure you have to give correct present working directory path and input put file name, Create output file name
 # Out put as FASTQC file
+# -Phred33 average base quality score
 java -jar ~//Desktop/NGS_pipeline/Trimmomatic-0.39/trimmomatic-0.39.jar SE -threads 4 data/SRR_1.fastq data/SRR1_Trim.fastq TRAILING:10 -phred33
 echo "Trimmomatic finished running!"
 
